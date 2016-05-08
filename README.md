@@ -28,6 +28,10 @@ Usage
 #### ./bin/letsencrypt-renew.sh
 * Auto-renew letencrypt certificates through cron: `ln -s /opt/webctl/bin/letsencrypt-renew.sh /etc/cron.daily/`
 
+#### ./conf/nginx-www
+* Make new directory structure known to logrotate
+* `ln -s /opt/webctl/conf/nginx-www /etc/logrotate.d`
+
 License
 ------------------
 
