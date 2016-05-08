@@ -8,7 +8,8 @@ A few scripts I use to setup new nginx instances.
 
 Install
 ------------------
-`sudo git clone https://github.com/kiu/webctl /opt/webctl`
+* `sudo git clone https://github.com/kiu/webctl /opt/webctl`
+* Add `include /www/*/etc/*.nginx;` to your `nginx.conf` `http` config
 
 Usage
 ------------------
