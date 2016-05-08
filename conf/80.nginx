@@ -1,0 +1,40 @@
+#server {
+#    listen                          80;
+#    listen                          [::]:80;
+#    server_name                     {FQDN};
+#    rewrite                         ^ https://{FQDN}$request_uri? ;
+#}
+
+server {
+    listen                          80;
+    listen                          [::]:80;
+    server_name                     {FQDN};
+
+    access_log  /www/{R_FQDN}/log/access.log;
+    error_log   /www/{R_FQDN}/log/error.log;
+
+    autoindex                       off;
+    charset                         utf8;
+    underscores_in_headers          on;
+
+    root  /www/{R_FQDN}/webroot/;
+
+    location / {
+	return 301 https://{FQDN}$request_uri?;
+    }
+
+#    location / {
+#        index  index.html index.php;
+#        expires 1h;
+#    }
+
+    include /opt/webctl/inc/inc_location.nginx;
+
+    #include /opt/webctl/inc/inc_fpm.nginx;
+    #include /opt/webctl/inc/inc_php.nginx;
+
+    #location /ServletPath/ {
+        #include /opt/webctl/inc/inc_tomcat.nginx;
+    #}
+
+}

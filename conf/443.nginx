@@ -1,0 +1,38 @@
+server {
+    listen                          443 ssl;
+    listen                          [::]:443 ssl;
+    server_name                     {FQDN};
+
+    access_log  /www/{R_FQDN}/log/access.log;
+    error_log   /www/{R_FQDN}/log/error.log;
+
+    autoindex                       off;
+    charset                         utf8;
+    underscores_in_headers          on;
+
+    root  /www/{R_FQDN}/webroot/;
+
+    location / {
+        index  index.html index.php;
+        expires 1h;
+    }
+
+    include /opt/webctl/inc/inc_location.nginx;
+
+    #include /opt/webctl/inc/inc_fpm.nginx;
+    #include /opt/webctl/inc/inc_php.nginx;
+
+    #location /ServletPath/ {
+        #include /opt/webctl/inc/inc_tomcat.nginx;
+    #}
+
+    include /opt/webctl/inc/inc_ssl.nginx;
+
+    # SSL Certs
+    ssl_certificate                 /etc/letsencrypt/live/{FQDN}/cert.pem;
+    ssl_certificate_key             /etc/letsencrypt/live/{FQDN}/privkey.pem;
+
+    ## verify chain of trust of OCSP response using Root CA and Intermediate certs
+    ssl_trusted_certificate         /etc/letsencrypt/live/{FQDN}/chain.pem;
+
+}
