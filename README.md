@@ -8,7 +8,7 @@ A few scripts I use to setup new nginx instances.
 
 Install
 ------------------
-`sudo git clone http://github.com/kiu/webctl /opt/webctl`
+`sudo git clone https://github.com/kiu/webctl /opt/webctl`
 
 Usage
 ------------------
@@ -18,7 +18,7 @@ Usage
 * Reloading webserver to activate new configuration
 
 #### ./bin/generate-ssl.sh <FQDN>
-* Generate basic https configuration for `./bin/generate-dmain.sh` generated domains
+* Generate basic https configuration for `./bin/generate-domain.sh` generated domains
 * Retrieve letsencrypt certificate (assuming a letsencrypt install under /opt/letsencrypt)
 * Reloading webserver to activate new configuration
 
