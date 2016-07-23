@@ -2,7 +2,7 @@
 #    listen                          80;
 #    listen                          [::]:80;
 #    server_name                     {FQDN};
-#    rewrite                         ^ https://{FQDN}$request_uri? ;
+#    rewrite                         ^ https://{FQDN}$request_uri;
 #}
 
 server {
@@ -20,7 +20,7 @@ server {
     root  /www/{R_FQDN}/webroot/;
 
     location / {
-	return 301 https://{FQDN}$request_uri?;
+	return 301 https://{FQDN}$request_uri;
     }
 
 #    location / {
